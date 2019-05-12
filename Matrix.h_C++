@@ -1,0 +1,59 @@
+#ifndef _MATRIX_
+#define _MATRIX_
+#include <iostream>
+template <typename T>
+class Matrix
+{
+private:
+	T** arr;
+	int row;
+	int col;
+public:
+	Matrix() {};
+	Matrix(int row_a, int col_a);
+	Matrix(int row_a, int col_a, T sample);
+	void show_matrix();
+};
+
+template <typename T>
+Matrix<T>::Matrix(int row_a, int col)
+{
+	row = row_a;
+	col = col_a;
+	arr = new T*[row];
+	for (int i = 0; i < row; i++)
+	{
+		arr[i] = new T[col];
+	}
+}
+
+template <typename T>
+Matrix<T>::Matrix(int row_a, int col_a, T sample)
+{
+	row = row_a;
+	col = col_a;
+	arr = new T*[row];
+	for (int i = 0; i < row; i++)
+	{
+	arr[i] = new T[col];
+	for (int j = 0; j < col; j++)
+	{
+	arr[i][j] = sample;
+	}
+	}
+}
+
+template <typename T>
+void Matrix<T>::show_matrix()
+{
+	for (int i = 0; i < row; i++)
+	{
+		std::cout << "| ";
+		for (int j = 0; j < col; j++)
+		{
+			std::cout << arr[i][j] << " ";
+		}
+		std::cout << "|\n";
+	}
+}
+#endif
